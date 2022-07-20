@@ -32,4 +32,16 @@ public class User {
         this.totalAmount = totalAmount;
     }
 
+    public boolean availableLevelUp() {
+        return Level.availableLevelUp(this.getLevel(), this.getTotalAmount());
+    }
+
+    public Level levelUp() {
+        Level nextLevel = Level.getNextLevel(this.getTotalAmount());
+
+        this.level = nextLevel;
+        this.updateDate = LocalDate.now();
+
+        return nextLevel;
+    }
 }
