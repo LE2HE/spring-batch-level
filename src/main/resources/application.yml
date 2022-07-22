@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/spring_batch?characterEncodeing=UTF=8&serverTimezone=UTC&rewriteBatchedStatements=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  batch:
+    jdbc:
+      initialize-schema: never
