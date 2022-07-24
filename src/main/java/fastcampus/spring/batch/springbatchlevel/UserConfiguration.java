@@ -61,8 +61,11 @@ public class UserConfiguration {
                 .incrementer(new RunIdIncrementer())
                 .start(this.saveUserStep())
                 .next(this.userLevelUpStep())
-                .next(this.orderStatisticsStep(null))
                 .listener(new LevelUpJobExecutionListener(userRepository))
+                .next(new JobParametersDecide("date"))
+                .on(JobParametersDecide.CONTINUE.getName())
+                .to(this.orderStatisticsStep(null))
+                .build()
                 .build();
     }
 
