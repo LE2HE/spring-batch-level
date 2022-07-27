@@ -1,4 +1,10 @@
 spring:
+  batch:
+    job:
+      name: ${job.name:NONE}
+
+---
+spring:
   config:
     activate:
       on-profile: mysql
@@ -13,5 +19,7 @@ spring:
       ddl-auto: update
     show-sql: true
   batch:
+    job:
+      names: ${job.name:NONE}
     jdbc:
       initialize-schema: never
